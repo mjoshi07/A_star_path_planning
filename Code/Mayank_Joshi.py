@@ -15,11 +15,6 @@ import animate_searching as anime
 MIN_STEP_SIZE = 0
 MAX_STEP_SIZE = 10
 
-Action_sets = {(1, 0): 1.0, (0, 1): 1.0,
-               (-1, 0): 1.0, (0, -1): 1.0,
-               (1, 1): 1.4, (-1, 1): 1.4,
-               (-1, -1): 1.4, (1, -1): 1.4}
-
 
 class Node:
     def __init__(self, node_state, parent_node=None, cost_to_come=0, childs=None):
@@ -138,13 +133,10 @@ def start_a_star(world_map, start_location, end_location, clearance, step_size, 
 
     pq.put([inital_node.cost_to_come, inital_node.node_state, inital_node])
 
-    i = 0
     start = time.time()
 
     # iterate through open list dictionary till its size is not 0
     while not pq.empty():
-
-        i += 1
 
         # pop a new node with lowest Cost from the priority queue
         cur_node = pq.get()[2]
